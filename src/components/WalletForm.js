@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchAPI } from '../redux/actions';
+import { fetchAPI, totalExpenses } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
@@ -10,17 +10,35 @@ class WalletForm extends Component {
     description: '',
     method: 'Dinheiro',
     tag: 'Alimentação',
+    id: 0,
+    exchangeRates: '',
   };
 
-  // componentDidMount() {
-  //   const { dispatch } = this.props;
-  //   dispatch(fetchAPI());
-  // }
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchAPI());
+  }
 
   handleChangeInput = ({ target }) => {
     const { name, value } = target;
     this.setState((prev) => ({ ...prev,
       [name]: value }));
+  };
+
+  addExpenses = async (event) => {
+    event.preventDefault();
+    const { dispatch } = this.props;
+    const { id } = this.state;
+    dispatch(totalExpenses(this.state));
+    this.setState({
+      id: id + 1,
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+      exchangeRates: '',
+    });
   };
 
   render() {
@@ -88,6 +106,13 @@ class WalletForm extends Component {
             </select>
           </label>
         </form>
+        <button
+          type="button"
+          // disabled={ isDisabled }
+          onClick={ this.addExpenses }
+        >
+          Adicionar despesa
+        </button>
       </>
     );
   }
@@ -95,7 +120,7 @@ class WalletForm extends Component {
 
 WalletForm.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -104,10 +129,10 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchApiDispatch: dispatch(fetchAPI()),
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     fetchApiDispatch: dispatch(fetchAPI()),
+//   };
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WalletForm);
+export default connect(mapStateToProps)(WalletForm);
