@@ -2,6 +2,7 @@ export const USER_EMAIL = 'USER_EMAIL';
 export const RESPONSE_API = 'RESPONSE_API';
 export const TOTAL_EXPENSE = 'TOTAL_EXPENSE';
 export const SAVE_EXPENSE = 'SAVE_EXPENSE';
+export const CLEAR_BUTTON = 'CLEAR_BUTTON';
 
 export const userEmail = (email) => ({
   type: USER_EMAIL,
@@ -16,6 +17,11 @@ export const responseAPI = (currencies) => ({
 export const saveExpense = (expenses) => ({
   type: SAVE_EXPENSE,
   expenses,
+});
+
+export const clearButton = (payload) => ({
+  type: CLEAR_BUTTON,
+  payload,
 });
 
 export function fetchAPI() {

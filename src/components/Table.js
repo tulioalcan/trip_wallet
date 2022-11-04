@@ -1,11 +1,18 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { clearButton } from '../redux/actions';
 
 class Table extends Component {
+  clearExpense = ({ target }) => {
+    const { expenses, dispatch } = this.props;
+    const remove = expenses.filter((exp) => +target.id !== +exp.id);
+    dispatch(clearButton(remove));
+  };
+
   render() {
     const { expenses } = this.props;
-    console.log(expenses);
+    // console.log(expenses);
     return (
       <>
         <h3>Table</h3>
@@ -24,43 +31,36 @@ class Table extends Component {
             </tr>
           </thead>
           <tbody>
-            {expenses.map((expense, id) => (
-              <tr key={ id }>
-                <td key={ expense.description }>{expense.description}</td>
-                <td key={ expense.tag }>{expense.tag}</td>
-                <td key={ expense.method }>{expense.method}</td>
-                <td key={ expense.value }>{Number(expense.value).toFixed(2) }</td>
-                <td
-                  key={ expense.exchangeRates[expense.currency].name }
-                >
-                  {expense.exchangeRates[expense.currency].name}
-                </td>
-                <td
-                  key={ expense.exchangeRates[expense.currency].ask }
-                >
+            {expenses.map((expense) => (
+              <tr key={ expense.id }>
+                <td>{expense.description}</td>
+                <td>{expense.tag}</td>
+                <td>{expense.method}</td>
+                <td>{Number(expense.value).toFixed(2) }</td>
+                <td>{expense.exchangeRates[expense.currency].name}</td>
+                <td>
                   { Number(expense.exchangeRates[expense.currency].ask).toFixed(2) }
                 </td>
-                <td
-                  key={ expense.value * id }
-                >
+                <td>
                   {
                     Number(expense.value
                         * expense.exchangeRates[expense.currency].ask)
                       .toFixed(2)
                   }
                 </td>
-                <td key={ expense.currency }>Real</td>
-                {/* <td
+                <td>Real</td>
+                <td
                   key="delete-btn"
                 >
                   <button
+                    id={ expense.id }
                     type="button"
                     data-testid="delete-btn"
+                    onClick={ this.clearExpense }
                   >
-                    Excluir despesa
-
+                    Excluir
                   </button>
-                </td> */}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -72,8 +72,11 @@ class Table extends Component {
 
 Table.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
+
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
 });
+
 export default connect(mapStateToProps)(Table);
