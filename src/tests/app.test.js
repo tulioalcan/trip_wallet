@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import { legacy_createStore as createStore } from 'redux';
 import App from '../App';
+import Wallet from '../pages/Wallet';
 import rootReducer from '../redux/reducers/index';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 
@@ -52,5 +53,13 @@ describe('Criando testes para Página de Login', () => {
     const { pathname } = history.location;
 
     expect(pathname).toBe('/carteira');
+  });
+
+  test('Testa se o input de valor está funcionando', () => {
+    renderWithRouterAndRedux(<Wallet />);
+
+    const valueInput = screen.getByTestId('value-input');
+    userEvent.type(valueInput, 'teste');
+    expect(valueInput.value).toBe('');
   });
 });
