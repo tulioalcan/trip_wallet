@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { userEmail } from '../redux/actions';
+import './login.css';
 
 const minLengthPassword = 6;
 
@@ -48,8 +49,10 @@ class Login extends React.Component {
     const { email, password, isDisabled } = this.state;
 
     return (
-      <>
-        <h3>Página de Login</h3>
+      <div
+        className="login"
+      >
+        <h3>Login</h3>
         <form>
           <label htmlFor="email">
             <input
@@ -70,16 +73,16 @@ class Login extends React.Component {
               onChange={ this.handleButton }
               value={ password }
             />
-            <button
-              type="button"
-              disabled={ isDisabled }
-              onClick={ this.handleSubmit }
-            >
-              Entrar
-            </button>
           </label>
         </form>
-      </>
+        <button
+          type="button"
+          disabled={ isDisabled }
+          onClick={ this.handleSubmit }
+        >
+          Entrar
+        </button>
+      </div>
     );
   }
 }
