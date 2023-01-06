@@ -1,0 +1,22 @@
+.wallet {
+  background-color: #C5FFD7;
+}
+
+body {
+  background-color: #C5FFD7;
+}
+
+.walletForm {
+  align-items: center;
+  display: flex;
+  /* padding: 20px; */
+  justify-content: center;
+  margin-top: 3%;
+  margin-right: 50px;
+  background-color: #C5FFD7;
+}
+
+.buttonAdd {
+  margin-left: 43%;
+  margin-top: 1%;
+}

@@ -1,0 +1,33 @@
+.table {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 20px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px 10px 10px 10px;
+  text-align: center;
+}
+
+table, td {
+  border: 1px solid #017e28;
+  border-radius: 10px 10px 10px 10px;
+  border-style:dotted;
+  /* border-collapse:; */
+  padding-top: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-bottom: 5px;
+  padding: 5px;
+}
+
+table, th {
+  padding-top: 5px;
+  padding: 3px;
+
+}
+
+.buttonEx {
+  border-radius: 10px 10px 10px 10px;
+  width: 100px;
+  height: 30px;
+}

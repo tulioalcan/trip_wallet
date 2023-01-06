@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchAPI, totalExpenses } from '../redux/actions';
+import '../pages/wallet.css';
 
 class WalletForm extends Component {
   state = {
@@ -46,8 +47,8 @@ class WalletForm extends Component {
     const { currencies } = this.props;
     return (
       <>
-        <h3>WalletForm</h3>
-        <form>
+        {/* <h3>WalletForm</h3> */}
+        <form className="walletForm">
           <label htmlFor="value">
             <input
               data-testid="value-input"
@@ -110,6 +111,7 @@ class WalletForm extends Component {
           type="button"
           // disabled={ isDisabled }
           onClick={ this.addExpenses }
+          className="buttonAdd"
         >
           Adicionar despesa
         </button>
