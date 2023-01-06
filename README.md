@@ -9,8 +9,8 @@
   - Visualizar uma tabelas com seus gastos;
   - Visualizar o total de gastos convertidos para o Real;
 
-  ![Screenshot](public/examples/login.png)
-  ![Screenshot](public/examples/table.png)
+  ![Screenshot](public/login.png)
+  ![Screenshot](public/table.png)
 </details>
 
 <details>
