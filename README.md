@@ -5,7 +5,7 @@
 
   Neste projeto foi desenvolvido uma carteira de controle de gastos de viagem com um conversor de moedas, o projeto teve como base o projeto TrabeWallet do curso de desenvolvimento Web da Trybe, ao utilizar essa aplicação o usuário é ser capaz de:
 
-  - Adicionar, remover e editar um gasto;
+  - Adicionar e remover um gasto;
   - Visualizar uma tabelas com seus gastos;
   - Visualizar o total de gastos convertidos para o Real;
 
