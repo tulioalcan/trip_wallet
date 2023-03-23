@@ -22,10 +22,11 @@ O Trip Wallet é uma aplicação simples para gerenciamento de despesas de viage
 
 <details>
   <summary><strong>👨‍💻 Como Executar o Projeto?</strong></summary><br />
-  1.Clone o repositório: git clone https://github.com/tulioalcan/trip_wallet.git;
-  2.Acesse a pasta do projeto: cd trip_wallet;
-  3.Instale as dependências: npm install;
-  4.Inicie o servidor Expo: npm start;
+
+  - Clone o repositório: git clone https://github.com/tulioalcan/trip_wallet.git;
+  - Acesse a pasta do projeto: cd trip_wallet;
+  - Instale as dependências: npm install;
+  - Inicie o servidor Expo: npm start;  
 
   Isso iniciará o aplicativo no seu emulador ou dispositivo conectado.
 </details>
